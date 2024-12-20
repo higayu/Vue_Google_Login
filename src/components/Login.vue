@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="background-color: aqua;">
     <h1>Login</h1>
     <button @click="signInWithGoogle">Sign in with Google</button>
     <p v-if="user">Welcome, {{ user.name }}</p>
