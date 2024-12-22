@@ -1,10 +1,6 @@
 <template>
   <div>
     
-    <h1 class="text-3xl font-bold underline bg-white">
-      Hello world!
-    </h1>
-
     <!-- Header Section -->
     <header>
       <div class="header-wrapper">

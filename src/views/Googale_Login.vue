@@ -1,7 +1,12 @@
 <template>
   <div style="background-color: pink; padding: 20px; text-align: center;">
+
     <h1>Google Login</h1>
-    <button v-if="!user" @click="handleLogin">Login with Google</button>
+    <button v-if="!user" class="google-login-btn" @click="handleLogin">
+      <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google Icon" class="google-icon" />
+      Login with Google
+    </button>
+
     <p v-if="user">
       Hello, <strong>{{ user.name }}</strong><br />
       <img :src="user.image" alt="Profile Picture" style="border-radius: 50%; width: 100px; height: 100px;" /><br />
@@ -79,7 +84,6 @@ onMounted(() => {
 
 <style scoped>
 button {
-  background-color: #4285F4;
   color: white;
   padding: 10px 20px;
   border: none;
