@@ -23,13 +23,18 @@ const handleLogin = () => {
   authInstance.signIn()
     .then(response => {
       const profile = response.getBasicProfile();
-      user.value = {
+      const userInfo = {
         id: profile.getId(),
         name: profile.getName(),
         email: profile.getEmail(),
         image: profile.getImageUrl(),
       };
-      console.log('User logged in:', user.value);
+      user.value = userInfo;
+
+      // ローカルストレージに保存
+      localStorage.setItem('user', JSON.stringify(userInfo));
+
+      console.log('User logged in and saved to localStorage:', userInfo);
     })
     .catch(error => {
       console.error('Login failed:', error);
@@ -40,11 +45,23 @@ const handleLogout = () => {
   const authInstance = gapi.auth2.getAuthInstance();
   authInstance.signOut().then(() => {
     user.value = null;
-    console.log('User logged out');
+
+    // ローカルストレージから削除
+    localStorage.removeItem('user');
+
+    console.log('User logged out and removed from localStorage');
   });
 };
 
+// ページリロード時にローカルストレージから復元
 onMounted(() => {
+  const savedUser = localStorage.getItem('user');
+  if (savedUser) {
+    user.value = JSON.parse(savedUser);
+    console.log('User restored from localStorage:', user.value);
+  }
+
+  // Google API の初期化
   const start = () => {
     gapi.client.init({
       clientId,
