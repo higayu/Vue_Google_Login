@@ -14,6 +14,8 @@
       </div>
     </header>
 
+    <SideBar />
+
     <!-- Main Content -->
     <main>
       <RouterView />
@@ -24,6 +26,7 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router';
 import Googale_Login from './views/Googale_Login.vue';
+import SideBar from './views/SideBar.vue'
 </script>
 
 <style scoped>

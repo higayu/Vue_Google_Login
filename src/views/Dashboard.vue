@@ -1,10 +1,9 @@
 <template>
   <main>
-    <SideBar />
+    <h1>ダッシュボード</h1>
   </main>
 </template>
 
 <script setup>
-import SideBar from '../components/SideBar.vue'
 
 </script>
