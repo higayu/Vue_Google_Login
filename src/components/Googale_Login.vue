@@ -10,7 +10,7 @@
 import { onMounted, ref } from 'vue';
 import { gapi } from 'gapi-script';
 
-const clientId = 'YOUR_GOOGLE_CLIENT_ID'; // Google Cloud Consoleから取得したクライアントID
+const clientId = '329141313781-09ervh52c9jb3egdogkfcsdqv506qkq3.apps.googleusercontent.com'; // Google Cloud Consoleから取得したクライアントID
 const user = ref(null);
 
 const handleLogin = () => {
