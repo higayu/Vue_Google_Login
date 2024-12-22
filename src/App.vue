@@ -3,29 +3,26 @@
     <!-- Header Section -->
     <header>
       <div class="header-wrapper">
-        <!-- Google Login Component -->
-        <Googale_Login />
-        
+        <h1>OCRアプリケーション</h1>
         <!-- Navigation Links -->
         <nav>
-          <RouterLink to="/">Home</RouterLink>
-          <RouterLink to="/dashboard">Dashboard</RouterLink>
+          <RouterLink to="/">ログアウト</RouterLink>
         </nav>
       </div>
     </header>
 
-    <SideBar />
-
-    <!-- Main Content -->
-    <main>
-      <RouterView />
-    </main>
+    <!-- Content Section: SideBar and Main -->
+    <div class="content-wrapper">
+      <SideBar />
+      <main>
+        <RouterView />
+      </main>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { RouterLink, RouterView } from 'vue-router';
-import Googale_Login from './views/Googale_Login.vue';
 import SideBar from './views/SideBar.vue'
 </script>
 
@@ -38,56 +35,36 @@ body {
 
 /* Header Styling */
 header {
-  background-color: greenyellow;
+  background-color: #4caf50;
+  color: white;
   padding: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .header-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
 }
 
-/* Navigation Links */
-nav {
+/* Content Wrapper Styling */
+.content-wrapper {
   display: flex;
-  gap: 1rem;
+  flex-direction: row;
+  height: calc(100vh - 70px); /* Full height minus header */
 }
 
-nav a {
-  text-decoration: none;
-  color: #333;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  font-weight: bold;
-}
-
-nav a.router-link-exact-active {
-  background-color: #d1ffd1;
-}
-
-nav a:hover {
-  background-color: #baffba;
-  color: #000;
+/* SideBar Styling */
+SideBar {
+  background-color: #f4f4f4;
+  width: 250px;
+  padding: 1rem;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
 /* Main Content Styling */
 main {
+  flex-grow: 1;
   padding: 1rem;
-}
-
-/* Responsive Design */
-@media (min-width: 768px) {
-  header {
-    padding: 1rem 2rem;
-  }
-
-  nav a {
-    padding: 0.5rem 1.5rem;
-  }
+  overflow-y: auto;
 }
 </style>

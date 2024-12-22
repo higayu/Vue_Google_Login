@@ -5,7 +5,7 @@ import Dashboard from '../views/Dashboard.vue';
 
 const routes = [
   {
-    path: '/login',
+    path: '/',
     name: 'Login',
     component: Googale_Login,
   },
@@ -26,7 +26,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   const isAuthenticated = !!localStorage.getItem('authToken');
   if (to.meta.requiresAuth && !isAuthenticated) {
-    next('/login'); // 認証されていない場合はログインページへ
+    next('/'); // 認証されていない場合はログインページへ
   } else {
     next(); // 認証済みならそのまま進む
   }
