@@ -25,7 +25,9 @@
 
 <script setup>
 import { RouterLink, RouterView } from 'vue-router';
+import VueLocalStorage from 'vue-local-storage';
 import SideBar from './views/SideBar.vue'
+
 </script>
 
 <style scoped>

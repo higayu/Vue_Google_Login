@@ -19,9 +19,12 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import { gapi } from 'gapi-script';
+import { useLocalStorage } from '@vueuse/core'; // Vue 3 用のローカルストレージ管理
+
 
 const clientId = '329141313781-09ervh52c9jb3egdogkfcsdqv506qkq3.apps.googleusercontent.com'; // Google Cloud Consoleから取得したクライアントID
-const user = ref(null);
+// VueUseのuseLocalStorageを使用してローカルストレージをリアクティブに管理
+const user = useLocalStorage('user', null);
 
 const handleLogin = () => {
   const authInstance = gapi.auth2.getAuthInstance();
@@ -34,11 +37,8 @@ const handleLogin = () => {
         email: profile.getEmail(),
         image: profile.getImageUrl(),
       };
-      user.value = userInfo;
-
       // ローカルストレージに保存
-      localStorage.setItem('user', JSON.stringify(userInfo));
-
+      user.value = userInfo;
       console.log('User logged in and saved to localStorage:', userInfo);
     })
     .catch(error => {
@@ -50,21 +50,12 @@ const handleLogout = () => {
   const authInstance = gapi.auth2.getAuthInstance();
   authInstance.signOut().then(() => {
     user.value = null;
-
-    // ローカルストレージから削除
-    localStorage.removeItem('user');
-
     console.log('User logged out and removed from localStorage');
   });
 };
 
 // ページリロード時にローカルストレージから復元
 onMounted(() => {
-  const savedUser = localStorage.getItem('user');
-  if (savedUser) {
-    user.value = JSON.parse(savedUser);
-    console.log('User restored from localStorage:', user.value);
-  }
 
   // Google API の初期化
   const start = () => {
