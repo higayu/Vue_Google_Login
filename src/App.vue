@@ -1,82 +1,90 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import Googale_Login from './components/Googale_Login.vue'
-</script>
-
 <template>
-  <header>
-    <div style="background-color:greenyellow;" class="wrapper">
-      <Googale_Login msg="You did it!" />
+  <div>
+    <!-- Header Section -->
+    <header>
+      <div class="header-wrapper">
+        <!-- Google Login Component -->
+        <Googale_Login />
+        
+        <!-- Navigation Links -->
         <nav>
           <RouterLink to="/">Home</RouterLink>
-          <RouterLink to="/about">About</RouterLink>
+          <RouterLink to="/dashboard">Dashboard</RouterLink>
         </nav>
-    </div>
-  </header>
+      </div>
+    </header>
 
-  <RouterView />
+    <!-- Main Content -->
+    <main>
+      <RouterView />
+    </main>
+  </div>
 </template>
 
+<script setup>
+import { RouterLink, RouterView } from 'vue-router';
+import Googale_Login from './views/Googale_Login.vue';
+</script>
+
 <style scoped>
+/* General Styling */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Header Styling */
 header {
-  line-height: 1.5;
-  max-height: 100vh;
+  background-color: greenyellow;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
+.header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
 }
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
+/* Navigation Links */
+nav {
+  display: flex;
+  gap: 1rem;
 }
 
 nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
+  text-decoration: none;
+  color: #333;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-weight: bold;
 }
 
-nav a:first-of-type {
-  border: 0;
+nav a.router-link-exact-active {
+  background-color: #d1ffd1;
 }
 
-@media (min-width: 1024px) {
+nav a:hover {
+  background-color: #baffba;
+  color: #000;
+}
+
+/* Main Content Styling */
+main {
+  padding: 1rem;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
   header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+    padding: 1rem 2rem;
   }
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
+  nav a {
+    padding: 0.5rem 1.5rem;
   }
 }
 </style>
