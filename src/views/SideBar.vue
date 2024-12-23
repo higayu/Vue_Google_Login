@@ -4,7 +4,7 @@
       <!-- リストの表示範囲を制限してスクロール可能にする -->
       <ul class="space-y-2 bg-white shadow-md rounded-md overflow-hidden custom-scrollbar" style="max-height: 65vh; overflow-y: auto;">
         <li class="border-b border-gray-200 last:border-b-0 flex items-center">
-          リスト{{ envmoji }}
+          リスト
         </li>
       </ul>
   
