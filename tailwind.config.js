@@ -1,6 +1,8 @@
 module.exports = {
   // purge: [],　
-  purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
+  content: [
+    './src/**/*.{html,js,vue}', // 監視対象ファイルのパターンを指定
+  ],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {},
