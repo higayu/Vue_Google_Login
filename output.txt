@@ -1,0 +1,60 @@
+フォルダー パスの一覧:  ボリューム Windows
+ボリューム シリアル番号は AEBB-F45F です
+GoogleLogin
+│  .gitignore
+│  index.html
+│  output.txt
+│  package-lock.json
+│  package.json
+│  postcss.config.js
+│  README.md
+│  tailwind.config.js
+│  vite.config.js
+│  
+├─node_modules
+│                  
+├─public
+│      favicon.ico
+│      
+└─src
+    │  App.vue
+    │  firebase.js
+    │  index.css
+    │  main.js
+    │  
+    ├─assets
+    │      base.css
+    │      logo.svg
+    │      main.css
+    │      
+    ├─components
+    │  │  Login.vue
+    │  │  UserList.vue
+    │  │  
+    │  ├─icons
+    │  │      IconCommunity.vue
+    │  │      IconDocumentation.vue
+    │  │      IconEcosystem.vue
+    │  │      IconSupport.vue
+    │  │      IconTooling.vue
+    │  │      
+    │  └─__tests__
+    │          HelloWorld.spec.js
+    │          
+    ├─router
+    │      index.js
+    │      
+    ├─services
+    │      api.js
+    │      
+    ├─stores
+    │      RecodeList.js
+    │      
+    └─views
+            AboutView.vue
+            Dashboard.vue
+            Googale_Login.vue
+            SideBar.vue
+            styles.css
+            _Googale_Login.vue
+            
