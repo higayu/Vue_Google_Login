@@ -21,7 +21,7 @@
     "vite-plugin-vue-devtools": "^7.6.8",
     "vue": "^3.5.13",
     "vue-local-storage": "^0.1.3",
-    "vue-router": "^4.5.0"
+    "vue-router": "^4.0.13"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",

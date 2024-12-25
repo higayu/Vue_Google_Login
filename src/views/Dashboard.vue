@@ -1,19 +1,17 @@
 <template>
-  <div>
-    <h1>Welcome to the Dashboard</h1>
-    <p>{{ user.name }} さん、こんにちは！</p>
+  <div style="padding: 20px;">
+    <h1>Welcome to Dashboard</h1>
+    <button @click="handleLogout">Logout</button>
   </div>
 </template>
 
-<script>
-import { useUserStore } from '../stores/userStore'; // Pinia ストアをインポート
+<script setup>
+import { useRouter } from 'vue-router';
 
-export default {
-  setup() {
-    const userStore = useUserStore();
-    const user = userStore.user;
+const router = useRouter();
 
-    return { user };
-  },
+const handleLogout = () => {
+  localStorage.removeItem('authToken'); // トークンを削除
+  router.push('/'); // ログインページにリダイレクト
 };
 </script>
