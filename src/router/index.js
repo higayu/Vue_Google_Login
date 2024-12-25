@@ -2,6 +2,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Googale_Login from '../views/Googale_Login.vue';
 import Dashboard from '../views/Dashboard.vue';
+import { useUserStore } from '../stores/userStore'; // Pinia ストアをインポート
 
 const routes = [
   {
@@ -9,11 +10,11 @@ const routes = [
     name: 'Login',
     component: Googale_Login,
   },
-  {
-    path: '/dashboard',
+  { 
+    path: '/dashboard', 
     name: 'Dashboard',
     component: Dashboard,
-    meta: { requiresAuth: true },
+    meta: { requiresAuth: true }, // 認証が必要なルート
   },
 ];
 
@@ -22,18 +23,15 @@ const router = createRouter({
   routes,
 });
 
-// ナビゲーションガード
+// グローバルナビゲーションガード
 router.beforeEach((to, from, next) => {
-  const isAuthenticated = !!localStorage.getItem('authToken'); // 認証トークンがあるかチェック
+  const userStore = useUserStore(); // Piniaストアを取得
+  const isAuthenticated = userStore.isLoggedIn; // 認証状態を取得
 
   if (to.meta.requiresAuth && !isAuthenticated) {
-    if (to.path !== '/') {
-      next('/'); // 認証されていない場合はルートにリダイレクト
-    } else {
-      next(); // すでにログインページの場合はそのまま進む
-    }
+    next('/'); // 未認証の場合はログインページへリダイレクト
   } else {
-    next(); // 認証済みの場合または認証不要のルートならそのまま進む
+    next(); // 認証済みまたは認証不要のルートならそのまま進む
   }
 });
 
