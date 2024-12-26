@@ -25,8 +25,8 @@ import { useUserStore } from '../stores/userStore'; // Pinia ストアをイン�
 
 const router = useRouter(); // Router インスタンスを取得
 
-//const clientId = import.meta.env.VITE_API_CLIENT;
-const clientId = import.meta.env.VITE_API_CLIENT_MY;
+const clientId = import.meta.env.VITE_API_CLIENT;
+//const clientId = import.meta.env.VITE_API_CLIENT_MY;
 
 const userStore = useUserStore(); // ストアを使用
 
