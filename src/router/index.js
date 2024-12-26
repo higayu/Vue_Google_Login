@@ -28,7 +28,9 @@ router.beforeEach((to, from, next) => {
   const userStore = useUserStore(); // Piniaストアを取得
   const isAuthenticated = userStore.isLoggedIn; // 認証状態を取得
 
-  if (to.meta.requiresAuth && !isAuthenticated) {
+  if (to.path === '/' && isAuthenticated) {
+    next('/dashboard'); // ルートが'/'で認証済みの場合はダッシュボードへリダイレクト
+  } else if (to.meta.requiresAuth && !isAuthenticated) {
     next('/'); // 未認証の場合はログインページへリダイレクト
   } else {
     next(); // 認証済みまたは認証不要のルートならそのまま進む
