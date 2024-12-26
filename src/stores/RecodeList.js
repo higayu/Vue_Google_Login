@@ -1,9 +1,10 @@
 import apiService from '@/services/api.js';
 import { defineStore, setActivePinia } from 'pinia';
 
-export const usePrintDataStore = defineStore('RecodeList', {
+export const useRecodeDataStore = defineStore('RecodeList', {
   state: () => ({
     records: [], 
+    SelectItem:null,
   }),
 
 //-------------------------「 action 」---------------------------------//
@@ -14,6 +15,10 @@ actions: {
     const response = await apiService.getRecode();
     this.records = response.data;
   },
+  async getDataList(Gmail){
+    const response = await apiService.getDataList(Gmail);
+    this.records =response.data;
+  }
 
 },//------------------action----------------//
 

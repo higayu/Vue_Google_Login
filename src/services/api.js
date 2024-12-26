@@ -41,28 +41,12 @@ class ApiService {
     }
 
 
-    // 最近のサイドバー情報を取得する３１件メソッド
-    async getSideRecent() {
-        try {
-            const response = await this.api.get(import.meta.env.VITE_SIDEBAR_RECENT, {
-                withCredentials: true,
-                headers: {
-                  'Content-Type': 'application/json',
-                }
-              });
-            return response.data;
-        } catch (error) {
-            console.error('Error fetching recent sidebar info:', error);
-            throw error;
-        }
-    }
-
     // 選択した1か月分の月のサイドバー情報を取得するメソッド
-    async getSideByMonth(selectMonth) {
+    async getDataList(Gmail) {
         try {
 
-            const postData = { prev: '', month: selectMonth };
-            const response = await this.api.post(import.meta.env.VITE_SIDEBAR_MONTH, postData, {
+            const postData = { prev: '', account: Gmail };
+            const response = await this.api.post(import.meta.env.VITE_API_DATALIST, postData, {
                 withCredentials: true,
                 headers: {
                   'Content-Type': 'application/json',
