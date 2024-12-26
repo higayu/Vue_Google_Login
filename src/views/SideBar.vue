@@ -41,7 +41,6 @@
   <script>
   import { ref, reactive, computed, watch, onMounted, toRefs } from 'vue';
   import { useRouter } from 'vue-router'; // useRouterをインポート
-  import { useRecodeDataStore } from '../stores/RecodeList';
   import { useUserStore } from '../stores/userStore';
 
   export default {
@@ -53,26 +52,39 @@
   
     setup(props, { emit }) {
       const envmoji = import.meta.env.VITE_API_URL;
-      const RecodeListStore = useRecodeDataStore();
       const filteredRecords = ref([]); // デフォルト値として空配列を設定
       const userStore = useUserStore(); // ストアを使用
 
     // フィルタリングロジック: Search_txt と Search_id に基づいてフィルタリング
     const updateFilteredRecords = () => {
-      if (!RecodeListStore.records || !Array.isArray(RecodeListStore.records)) {
+      if (!userStore.records || !Array.isArray(userStore.records)) {
         filteredRecords.value = [];
         return;
       }
 
-      filteredRecords.value = RecodeListStore.records;
+      filteredRecords.value = userStore.records;
     };
 
-    
+
+        // Watch the InputData object
+    watch(
+      () => printDataStore.InputData,
+      (newInputData, oldInputData) => {
+
+        form.value = newInputData;
+        if((form.user_id !='' && form.day_key != '') && ShareStore.update_flg){
+          ShareStore.setReadOnlyFlg(true);
+        }
+
+      },
+      { deep: true }
+    );
+
 
       return {
         envmoji,
         filteredRecords,
-        RecodeListStore,
+        userStore,
         updateFilteredRecords,
       };
     },

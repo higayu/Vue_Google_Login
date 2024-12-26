@@ -4,6 +4,8 @@ import { defineStore, setActivePinia } from 'pinia';
 export const useUserStore = defineStore('userStore', {
   state: () => ({
     user: null,
+    records: [], 
+    SelectItem:null,
   }),
 
   getters: {
@@ -12,6 +14,12 @@ export const useUserStore = defineStore('userStore', {
   },
 
   actions: {
+
+    async getDataList(Gmail){
+      const response = await apiService.getDataList(Gmail);
+      this.records =response.data;
+    },
+
     // ユーザー情報を設定する
     setUser(userInfo) {
       this.user = userInfo;
