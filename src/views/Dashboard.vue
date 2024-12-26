@@ -2,6 +2,8 @@
   <div>
     <h1>Welcome to the Dashboard</h1>
     <p>{{ user.name }} さん、こんにちは！</p>
+
+    
   </div>
 </template>
 
